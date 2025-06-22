@@ -5,7 +5,6 @@ import { CardCounts, ImportLogsResponse } from '@/types/importRecord'
 import DashboardCards from './dashboardCards'
 import Pagination from './pagenation'
 import { fetchImportLogs } from '@/lib/api'
-import { Plus, RefreshCw } from 'lucide-react'
 type Props = {
     importData: ImportLogsResponse
     CardData: CardCounts
@@ -16,7 +15,7 @@ const ImportLogsPage = ({ importData, CardData }: Props) => {
     useEffect(() => {
         const getLogs = async () => {
             try {
-                const data = await fetchImportLogs(currentPage, 10);
+                const data:ImportLogsResponse = await fetchImportLogs(currentPage, 10);
                 setImportHistory(data);
             } catch (error) {
                 console.error('Failed to fetch import logs', error);
@@ -62,7 +61,7 @@ const ImportLogsPage = ({ importData, CardData }: Props) => {
                                 </tr>
                             </thead>
                             {
-                                importHistory.data.length > 0 ?
+                                importHistory?.data?.length > 0 ?
                                     <tbody className="bg-white h-screen divide-y divide-gray-200 overflow-y-scroll">
                                         {
                                             importHistory && importHistory?.data.map((record) => (
@@ -96,7 +95,7 @@ const ImportLogsPage = ({ importData, CardData }: Props) => {
                         </table>
                     </div>
                     <div className='m-5'>
-                        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} record_per_page={importData?.data.length} total_event_list={importData?.totalRecords} />
+                        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} record_per_page={importData?.data?.length} total_event_list={importData?.totalRecords} />
                     </div>
                 </div>
 

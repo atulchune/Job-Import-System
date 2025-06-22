@@ -68,11 +68,6 @@ const fetchJobsFromFeeds = async () => {
       console.error(`❌ Error fetching from ${url}:`, err.message);
     }
   }
-  // console.log(allJobs, "allJobs")
-  // for (const job of allJobs) {
-  //   await jobQueue.add(job);
-  // }
-
   return allJobs;
 };
 

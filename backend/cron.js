@@ -6,9 +6,5 @@ const startCron = () => {
     console.log('🔁 Starting job fetch...');
     await fetchJobsFromFeeds();
   });
-//   cron.schedule('*/2 * * * *', async () => {
-//   console.log('⏰ Running scheduled job import...');
-//   await fetchJobsFromFeeds();
-// });
 };
 export default startCron;
