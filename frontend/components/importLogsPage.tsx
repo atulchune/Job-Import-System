@@ -5,6 +5,7 @@ import { CardCounts, ImportLogsResponse } from '@/types/importRecord'
 import DashboardCards from './dashboardCards'
 import Pagination from './pagenation'
 import { fetchImportLogs } from '@/lib/api'
+import { formatDateTime } from '@/lib/dateFormatter'
 type Props = {
     importData: ImportLogsResponse
     CardData: CardCounts
@@ -47,6 +48,9 @@ const ImportLogsPage = ({ importData, CardData }: Props) => {
                                         File Name / URL
                                     </th>
                                     <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Import DateTime
+                                    </th>
+                                    <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Total
                                     </th>
                                     <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -72,7 +76,8 @@ const ImportLogsPage = ({ importData, CardData }: Props) => {
                                                             <div className="text-xs text-gray-500 truncate ">{record._id}</div>
                                                         </div>
                                                     </td>
-                                                    <td className="px-6 py-4 text-sm font-semibold text-gray-900">{record.totalFetched}</td>
+                                                    <td className="px-6 py-4 text-sm font-medium text-gray-900">{record?.timestamp?formatDateTime(record?.timestamp):"-"}</td>
+                                                    <td className="px-6 py-4 text-sm font-semibold text-blue-600 ">{record.totalFetched}</td>
                                                     <td className="px-6 py-4 text-sm font-semibold text-green-600">{record.newJobs}</td>
                                                     <td className="px-6 py-4 text-sm font-semibold text-orange-600">{record.updatedJobs}</td>
                                                     <td className="px-6 py-4 text-sm font-semibold text-red-600">{record.failedJobs.length}</td>
