@@ -23,6 +23,7 @@ const ImportLogsPage = ({ importData, CardData }: Props) => {
         };
         getLogs();
     }, [currentPage]);
+    console.log(CardData,"CardData")
     return (
         <div>
             <div className="min-h-screen bg-gray-50">
